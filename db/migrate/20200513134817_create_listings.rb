@@ -1,10 +1,11 @@
 class CreateListings < ActiveRecord::Migration[6.0]
   def change
     create_table :listings do |t|
-      t.text :title
+      t.string :title
       t.integer :price
       t.text :description
       t.boolean :show_phone
+      t.references :category, null: false, foreign_key: true
 
       t.timestamps
     end

@@ -1,0 +1,8 @@
+<h1><%= @listing.title %></h1>
+<p><%= @listing.description %></p>
+<% if @listing.picture.attached?%>
+<%= image_tag @listing.picture.service_url, class:'background'%>
+<% end %>
+<%= link_to "Edit #{@listing.title}", edit_listing_path(@listing.id) %>
+
+<%= link_to "delete a item", listing_path(@listing.id), method: :delete %>

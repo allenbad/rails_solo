@@ -5,11 +5,11 @@ one:
   price: 1
   description: MyText
   show_phone: false
-  location: one
+  category: one
 
 two:
   title: 
   price: 1
   description: MyText
   show_phone: false
-  location: two
+  category: two
