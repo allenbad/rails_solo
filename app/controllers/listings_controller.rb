@@ -1,12 +1,18 @@
 class ListingsController < ApplicationController
     before_action :set_listing, only: [:show, :edit, :update, :destroy]
-    
+    before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+
     def index
         @listing = Listing.all
+        if !session[:count]
+          session[:count] = 1
+        else
+          session[:count] += 1
+        end
     end
 
     def show
-
+    
     end
 
     def new
@@ -14,9 +20,12 @@ class ListingsController < ApplicationController
     end
 
     def create
+        #@listing = current_user.listings.build(listing_params)
         @listing = Listing.new(listing_params)
+        @listing.user_id = current_user.id
         if @listing.save
-          redirect_to root_path
+          flash[:success]= "successfully created a new item"
+          redirect_to @listing
         else
           render :new
         end

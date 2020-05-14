@@ -6,6 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+
+# Create users
+user_one = User.create(email: 'test1@box.com', password: 'password')
+user_two = User.create(email: 'test2@box.com', password: 'password')
+puts "Creating new test subjects"
+
+
 10.times do |i| # This should be above User generation
   location = Location.new(
     city: Faker::Address.city,
@@ -30,7 +37,8 @@ end
   description: Faker::Food.description,
   title: Faker::Food.dish,
   price: [6, 10, 20, 50].sample,
-  category_id: rand(1..5)
+  category_id: rand(1..5),
+  user_id: [1,2].sample
   )
   item.save!(validate: false)
   puts "Created #{i + 1} items.✅"
