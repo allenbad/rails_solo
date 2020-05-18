@@ -1,13 +1,32 @@
-<% @listing.each do |listing| %>
-  <%= link_to listing_path(listing.id) do %>
-    <div class="listing">
-    <p>Title: <%= listing.title %></p>
-    <p>Description: <%= listing.description %></p>
-    <p>Category: <%= listing.category.name %></p>
-    <%= image_tag listing.picture if listing.picture.attached?%>
-    </div>
+<div class="content">
+  <h2>Please choose what you want</h2>
+  <% @listings_unsold.each do |listing| %>
+    <%= link_to listing_path(listing.id) do %>
+      <div class="listing">
+        <div class="listing-content">
+          <p>Title: <%= listing.title %></p>
+          <p>Description: <%= listing.description %></p>
+          <p>Category: <%= listing.category.name %></p>
+        </div>
+        <div class="listing-image">
+          <%= image_tag listing.picture if listing.picture.attached?%>
+        </div>
+      </div>
+    <% end %>
   <% end %>
-<% end %>
-
-<h1>Page count</h1>
-<h3><%= session[:count] %></h3>
+  <h2>Already sold</h2>
+    <% @listings_sold.each do |listing| %>
+    <%= link_to listing_path(listing.id) do %>
+      <div class="listing">
+        <div class="listing-content">
+          <p>Title: <%= listing.title %></p>
+          <p>Description: <%= listing.description %></p>
+          <p>Category: <%= listing.category.name %></p>
+        </div>
+        <div class="listing-image">
+          <%= image_tag listing.picture if listing.picture.attached?%>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

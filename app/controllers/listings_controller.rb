@@ -3,9 +3,10 @@ class ListingsController < ApplicationController
     before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
     load_and_authorize_resource
-    
+
     def index
-        @listing = Listing.all
+        @listings_sold = Listing.where(sold: true)
+        @listings_unsold = Listing.where(sold: false)
         if !session[:count]
           session[:count] = 1
         else
@@ -21,17 +22,27 @@ class ListingsController < ApplicationController
         @listing = Listing.new
     end
 
+    # def create
+    #     #@listing = current_user.listings.build(listing_params)
+    #     @listing = Listing.new(listing_params)
+    #     @listing.user_id = current_user.id
+    #     if @listing.save
+    #       flash[:success]= "successfully created a new item"
+    #       redirect_to @listing
+    #     else
+    #       render :new
+    #     end
+    # end
     def create
-        #@listing = current_user.listings.build(listing_params)
-        @listing = Listing.new(listing_params)
-        @listing.user_id = current_user.id
-        if @listing.save
-          flash[:success]= "successfully created a new item"
-          redirect_to @listing
-        else
-          render :new
-        end
+      @listing = current_user.listings.create(listing_params)
+      if @listing.errors.any?
+        render :new
+      else
+        flash[:success] = "You successfully created a new listing!"
+        redirect_to @listing
+      end 
     end
+
 
     def edit
 

@@ -3,6 +3,8 @@
   <%= form.text_field :title %>
   <%= form.label :description %>
   <%= form.text_field :description %>
+  <%= form.label :deposit %>
+  <%= form.text_field :deposit %>
   <%= form.label :category %>
   <%= form.collection_select(:category_id, Category.all, :id, :name) %>
   <%= form.label :picture %>

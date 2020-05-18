@@ -38,7 +38,8 @@ end
   title: Faker::Food.dish,
   deposit: [10000,20000,30000].sample,
   category_id: rand(1..5),
-  user_id: [1,2].sample
+  user_id: [1,2].sample,
+  sold: false
   )
   item.save!(validate: false)
   puts "Created #{i + 1} items.✅"
