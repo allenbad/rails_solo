@@ -31,12 +31,12 @@ end
   puts "Created #{i + 1} categories.✅"
 end
 
-10.times do |i|
+5.times do |i|
   item = Listing.new(
   #user: User.find(rand(1..User.all.length)),
   description: Faker::Food.description,
   title: Faker::Food.dish,
-  price: [6, 10, 20, 50].sample,
+  deposit: [10000,20000,30000].sample,
   category_id: rand(1..5),
   user_id: [1,2].sample
   )
