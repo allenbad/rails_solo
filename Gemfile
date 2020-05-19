@@ -66,3 +66,5 @@ gem "stripe", "~> 5.22"
 gem "geocoder", "~> 1.6"
 
 gem 'rails_admin', '~> 2.0'
+
+gem "jquery-rails", "~> 4.4"

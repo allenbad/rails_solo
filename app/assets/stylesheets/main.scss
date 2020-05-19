@@ -1,3 +1,5 @@
+@import "navbar";
+
 .listing{
   border: 1px solid;
 }
@@ -23,3 +25,12 @@
   background-size: cover;
   background-position: left;
 }
+
+// navbar
+
+#listings-container {
+  .row {
+    margin-bottom: 1rem;
+  }
+}
+

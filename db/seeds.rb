@@ -31,7 +31,7 @@ end
   puts "Created #{i + 1} categories.✅"
 end
 
-5.times do |i|
+25.times do |i|
   item = Listing.new(
   #user: User.find(rand(1..User.all.length)),
   description: Faker::Food.description,

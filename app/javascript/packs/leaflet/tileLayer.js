@@ -1,6 +1,7 @@
 import L from 'leaflet'
 
 export const tileLayer = async (center) => {
+  console.log(center)
   const view = {zoom: 11, lat: center[0], long: center[1]}
   console.log(view)
   const map = L.map('map').setView([view.lat, view.long], view.zoom)

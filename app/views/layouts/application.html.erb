@@ -5,14 +5,28 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+     <%= stylesheet_pack_tag 'application' %>
+     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <script src="https://js.stripe.com/v3/"></script>
+
   </head>
 
   <body>
     <%= render "shared/nav" %>
-    <div class="container">
+    
+    <div id="page-wrapper" class="container">
+      <% if notice %>
+        <p class="alert alert-warning notice"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert alert-danger"><%= alert %></p>
+      <% end %>
      <%= yield %>
-    </div>
+   </div>
+   <%= render "shared/footer" %>
   </body>
 </html>

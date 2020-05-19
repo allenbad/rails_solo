@@ -1,7 +1,39 @@
-<h1>Choose one!!</h1>
+<div id="homepage">
+  <h5 class="py-5 text-center text-muted">One person's mysterious trash is another's mysterious treasure.</h5>
+  <!-- Browse Listings Enticement -->
+  <div id="browse-enticement" class="row mb-4">
+    <div class="col-sm-4 text-center">
+      <%# Find a new image to put here %>
+      <%= image_tag "transparent-mystery-box.jpg", class: "img-fluid mb-2" %>
+    </div>
+    <div class="col-sm-8">
+      <h3 class="mb-4">Buy Something Mysterious...</h3>
+      <p>Zombie ipsum reversus ab viral, nam rick grimes malum cerebro. De carne  corpora quaeritis.</p>
+      <p>Summus brains sit​​, morbo vel maleficia?</p>
+      <p>De apocalypsi gorger omero undead survivor dictum mauris!</p>
+      <p>
+        <%= link_to "Browse Listings", listings_path, class: "btn btn-primary" %>
+      </p>
+    </div>
+  </div><!-- end of #browse-enticement.row -->
 
-<%= link_to "Listings",listings_path, class: "listings-link" %>
+  <!-- Create Listing Enticement -->
+  <div id="sell-enticement" class="row mb-4">
+    <div class="col-sm-4 text-center">
+      <%# Find a new image to put here %>
+      <%= image_tag "yard-sale-kid.jpg", class: "img-fluid mb-2" %>
+    </div>
+    <div class="col-sm-8">
+      <h3 class="mb-4">Have stuff to sell?</h3>
+      <p>The voodoo sacerdos flesh eater, suscitat mortuos comedere carnem virus.</p>
+      <p>Qui animated corpse, cricket bat max brucks terribilem incessu zomby.</p>
+      <p>The whopping bear tests into the zesty cream.</p>
+      <p>The frosty twist deserves into the ceaseless mine.</p>
+      <p>
+        <%= link_to "Create a Listing", new_listing_path, class: "btn btn-primary" %>
+      </p>
+    </div>
+  </div><!-- end of #sell-enticement.row -->
 
-<div>
-  <%= button_to "Sign up", new_user_registration_path, method: :get %>
-</div>
+</div><!-- end of #homepage -->
+

@@ -1,32 +1,58 @@
-<div class="content">
-  <h2>Please choose what you want</h2>
-  <% @listings_unsold.each do |listing| %>
-    <%= link_to listing_path(listing.id) do %>
-      <div class="listing">
-        <div class="listing-content">
-          <p>Title: <%= listing.title %></p>
-          <p>Description: <%= listing.description %></p>
-          <p>Category: <%= listing.category.name %></p>
-        </div>
-        <div class="listing-image">
-          <%= image_tag listing.picture if listing.picture.attached?%>
-        </div>
-      </div>
+<h2 class="text-center mb-4">Listings</h2>
+<div class="text-center mb-4">
+    <%= link_to 'Create a Listing', new_listing_path, class: "btn btn-primary" %>
+</div>
+
+<div id="listings-container" class="container">
+  <% @listings_unsold.each_with_index do |listing, index| %>
+
+    <% if index == 0 # the very first listing %>
+      <div class="row"><!-- open .row -->
     <% end %>
-  <% end %>
-  <h2>Already sold</h2>
-    <% @listings_sold.each do |listing| %>
-    <%= link_to listing_path(listing.id) do %>
-      <div class="listing">
-        <div class="listing-content">      
-          <h3>Title: <%= listing.title %></h3>
-          <p>Description: <%= listing.description %></p>
-          <p>Category: <%= listing.category.name %></p>
-        </div>
-        <div class="listing-image">
-          <%= image_tag listing.picture if listing.picture.attached?%>
-        </div>
-      </div>
+
+    <%# first listing in the row (excluding the very first listing) %>
+    <% if index != 0 && (index + 1) % 3 == 1 %>
+      </div><!-- close ."row" -->
+      <div class="row"><!-- open .row -->
     <% end %>
-  <% end %>
+
+    <div class="col-sm-4 text-center"><!-- open column -->
+      <div class="container">
+        <div class="listing-image">  
+            <% unless listing.picture.attached? and user_signed_in? and listing.user_id == current_user.id %>
+              <%= link_to image_tag('defaultbox.jpeg', class: "img-thumbnail"), listing %>
+            <% else %>
+              <%= link_to image_tag(listing.picture, class: "img-thumbnail"), listing %>
+            <% end %>
+        </div><!-- end of .listing-image -->
+
+        <div class="listing-content mt-4">
+          <h5>
+            <%= listing.title %>
+          </h5>
+          <p>
+            <%= number_to_currency(listing.deposit / 100.0) %>
+          </p>
+          <p>
+            <%= link_to 'View Listing', listing, class: "btn btn-primary btn-xs" %>
+            <% if current_user && listing.user == current_user %>
+              <%= link_to '<span class="badge badge-warning">Edit</span>'.html_safe, edit_listing_path(listing) %>
+              <%= link_to '<span class="badge badge-danger">Remove</span>'.html_safe, listing, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% end %>
+          </p>
+        </div><!-- end of .listing-content -->
+      </div><!-- end of .container -->
+    </div><!-- close column -->
+
+    <% if listing == @listings.last %>
+      <% remaining_columns = 3 - (@listings.count % 3) %>
+      <% if remaining_columns > 0 && remaining_columns < 3 %>
+        <% remaining_columns.times do %>
+          <div class="col-sm-4"></div>
+        <% end %>
+      <% end %>
+      </div><!-- close .row -->
+    <% end %>
+
+  <% end # @listing.each_with_index%>
 </div>

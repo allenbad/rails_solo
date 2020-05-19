@@ -1,3 +1,13 @@
-<h1>edit a box</h1>
+<div id="edit-listing">
+  <h2 class="mb-4">Editing Listing</h2>
 
-<%= render "form", listing: @listing %>
+  <%= render "form", listing: @listing %>
+
+  <div class="row mb-4">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-8 pl-2">
+      <%= link_to 'Go Back', listings_path, class: "btn btn-secondary mr-2" %>
+      <%= link_to 'View Listing', @listing, class: "btn btn-secondary" %> 
+    </div>
+  </div>
+</div>
