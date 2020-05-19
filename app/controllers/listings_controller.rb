@@ -7,6 +7,7 @@ class ListingsController < ApplicationController
     def index
         @listings_sold = Listing.where(sold: true)
         @listings_unsold = Listing.where(sold: false)
+        
         if !session[:count]
           session[:count] = 1
         else
@@ -50,7 +51,7 @@ class ListingsController < ApplicationController
 
     def update
         if @listing.update(listing_params)
-          redirect_to root_path
+          redirect_to listing_path(@listing.id)
         else
           render :edit
         end
@@ -63,7 +64,7 @@ class ListingsController < ApplicationController
 
     private
       def listing_params
-        params.require(:listing).permit(:title, :description, :category_id, :picture)
+        params.require(:listing).permit(:title, :description, :deposit, :category_id, :picture)
       end
 
       def set_listing

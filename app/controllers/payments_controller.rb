@@ -7,6 +7,8 @@ class PaymentsController < ApplicationController
   end
 
   def webhook
+    p params
+    p "-" * 30
     payment_id = params[:data][:object][:payment_intent]
     payment = Stripe::PaymentIntent.retrieve(payment_id)
     listing_ids = payment.metadata.listing_ids.split(",")
@@ -42,7 +44,7 @@ class PaymentsController < ApplicationController
       payment_intent_data: {
         metadata: {
           user_id: current_user.id,
-          listing_ids: @listing_ids
+          listing_ids: listing_ids
         }
       },
       success_url: "#{root_url}payments/success?userId=#{current_user.id}&listingIds=#{@listing_ids}",

@@ -18,8 +18,8 @@
     <% @listings_sold.each do |listing| %>
     <%= link_to listing_path(listing.id) do %>
       <div class="listing">
-        <div class="listing-content">
-          <p>Title: <%= listing.title %></p>
+        <div class="listing-content">      
+          <h3>Title: <%= listing.title %></h3>
           <p>Description: <%= listing.description %></p>
           <p>Category: <%= listing.category.name %></p>
         </div>

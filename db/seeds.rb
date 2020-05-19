@@ -36,6 +36,7 @@ end
   #user: User.find(rand(1..User.all.length)),
   description: Faker::Food.description,
   title: Faker::Food.dish,
+  price: [15,130,220].sample,
   deposit: [10000,20000,30000].sample,
   category_id: rand(1..5),
   user_id: [1,2].sample,
