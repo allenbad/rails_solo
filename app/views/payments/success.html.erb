@@ -1,8 +1,8 @@
 <div>
   <% @listings.each do |listing| %>
-    <h1>You successfully got <%= listing.title %></h1> 
-    <h3>You paid <%= number_to_currency(listing.deposit / 100) %></h3>
+    <h1 class="mb-4">You successfully got <%= listing.title %></h1> 
+    <h3 class="mb-4">You paid <%= number_to_currency(listing.deposit / 100) %></h3>
   <% end %>
 </div>
 
-<%= link_to "Go To Listings", listings_path%>
+<%= link_to "Go To Listings", listings_path, class:"btn btn-outline-secondary" %>

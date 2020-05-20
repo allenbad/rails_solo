@@ -1,10 +1,16 @@
+
 <h1>Cart</h1>
-<ul>
+<br><br><br><br>
 <% @cart.each do |listing| %>
-  <li>
-    <%= listing.title %> | <%= number_to_currency(listing.deposit / 100.0) %>
-  </li>
+  <ul class="list-group list-group-horizontal top-sm">
+    <li class="list-group-item">
+      <%= listing.title %>
+    </li>
+    <li class="list-group-item">
+      <%= number_to_currency(listing.deposit / 100.0) %>
+    </li>
+  </ul>
 <% end %>
-</ul>
-<%= link_to "Pay Now", "", id: "stripe" %>
+<hr>
+<%= link_to "Pay Now", "", id: "stripe", class:"btn btn-outline-success" %>
 <%= javascript_pack_tag "stripe" %>

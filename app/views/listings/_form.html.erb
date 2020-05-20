@@ -1,7 +1,7 @@
 <%= form_with model: listing, local: true do |form|%>
   <div class="field form-group form-row">
     <div class="col-sm-4 col-form-label">
-      <%= label_tag :title, "Listing Title: " %>
+      <%= form.label :title, "Listing Title: " %>
     </div>
     <div class="col-sm-8">
       <%= form.text_field :title, class: "form-control"%>
@@ -10,16 +10,20 @@
   
   <div class="field form-group form-row">
     <div class="col-sm-4 col-form-label">
-      <%= label_tag :price, "Price: " %>
+      <%= form.label :price, "Price: " %>
     </div>
     <div class="col-sm-8">
-      <%= form.number_field :deposit, min: 100,class: "form-control"%>
+    <% if listing.deposit? %>
+      <%= form.number_field :deposit, value: listing.deposit / 100.00, class: "form-control", step: 'any' %>
+    <% else %>
+       <%= form.number_field :deposit, class: "form-control", step: 'any' %>    
+    <% end %>
     </div>
   </div><!-- end of row -->
   
   <div class="field form-group form-row">
     <div class="col-sm-4 col-form-label">
-      <%= label_tag :description, "Description: " %>
+      <%= form.label :description, "Description: " %>
     </div>
     <div class="col-sm-8">
       <%= form.text_area :description, class: "form-control"%>
@@ -28,28 +32,27 @@
 
   <div class="field form-group form-row">
     <div class="col-sm-4 col-form-label">
-      <%= label_tag :picture, "Picture" %>
+      <%= form.label :category, "Category: " %>
+    </div>
+    <div class="col-sm-8">
+     <%= form.collection_select(:category_id, Category.all, :id, :name) %>
+    </div>
+  </div><!-- end of row -->
+
+  <div class="field form-group form-row">
+    <div class="col-sm-4 col-form-label">
+      <%= form.label :picture, "Picture" %>
     </div>
     <div class="col-sm-8">
       <% if listing.picture.attached? %>
         <div class="row mb-2">
           <div class="col-sm-6">
-            <%= image_tag listing.picture, class: "img-fluid" %> 
+            <%= form.label listing.picture, class: "img-fluid" %> 
           </div>
           <div class="col"></div>
         </div>
       <% end %>
       <%= form.file_field :picture, accept: 'image/png,image/gif,image/jpeg,image/jpg', class: "form-control-file" %>
-    </div>
-  </div><!-- end of row -->
-  
-  <div class="field form-group form-row">
-    <div class="col-sm-4 col-form-label">
-      <%= label_tag :show_phone, "Show my phone number:" %>
-    </div>
-    <div class="col-sm-8">
-      <%= form.radio_button :show_phone, true %> Yes<br />
-      <%= form.radio_button :show_phone, false %> No
     </div>
   </div><!-- end of row -->
 

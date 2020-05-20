@@ -64,7 +64,9 @@ class ListingsController < ApplicationController
 
     private
       def listing_params
-        params.require(:listing).permit(:title, :description, :deposit, :category_id, :picture)
+        my_params = params.require(:listing).permit(:title, :description, :deposit, :category_id, :picture)
+        my_params[:deposit] = my_params[:deposit].to_f * 100.00
+        return my_params
       end
 
       def set_listing
