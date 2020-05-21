@@ -347,3 +347,8 @@ add reference : rails g AddNameRefToTablename
 <h4>14.Describe the way tasks are allocated and tracked in your project</h4>
 
 Please refer to Section 3.1
+
+### Credentials that are needed:
+- google
+- aws
+- stripe
