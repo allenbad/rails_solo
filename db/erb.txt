@@ -1,0 +1,46 @@
+Project mystery_box_marketplace {
+  database_type: "PostgreSQL"
+}
+
+Table Users {
+  id bigint [pk]
+  email string
+  password string
+  location_id integer (fk)
+}
+
+Table Locations {
+  id bigint [pk]
+  city string
+  state string
+  country string
+}
+
+Table Listings {
+  id bigint [pk]
+  user_id integer (fk)
+  title varchar
+  deposit integer
+  description text
+  image_url image
+  created_date date
+  updated_date date
+}
+
+Table Carts {
+  id bigint [pk]
+  user_id integer (fk)
+  listing_id integer (fk)
+}
+
+Table Categorys {
+  id bigint [pk]
+  name string
+  listing_id inaterger
+}
+
+Table cart_listings{
+  id bigint [pk]
+  listings_id bigint
+  cart_id bigint
+}

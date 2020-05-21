@@ -20,7 +20,7 @@ puts "Creating new test subjects✅"
 user_admin = User.create(email: 'admin@box.com', password: 'password', admin: true)
 puts "Creating admin✅"
 
-address_one = Venue.create(name: "Coder Academy", address: "120 Spencer Street, Melbourne")
+address_one = Venue.create(name: "Mystery Box", address: "120 Spencer Street, Melbourne")
 
 
 5.times do |i| # This should be above User generation

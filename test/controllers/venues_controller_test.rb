@@ -10,5 +10,4 @@ class VenuesControllerTest < ActionDispatch::IntegrationTest
     get venues_show_url
     assert_response :success
   end
-
 end
