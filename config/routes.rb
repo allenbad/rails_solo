@@ -11,5 +11,5 @@ Rails.application.routes.draw do
   get "/payments/success", to: "payments#success"
   post "/payments/webhook", to: "payments#webhook"
   get "/find_shop", to: "venues#index"
-
+  get "/pages/index", to: "pages#index"
 end

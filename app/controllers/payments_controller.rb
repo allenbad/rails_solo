@@ -18,7 +18,7 @@ class PaymentsController < ApplicationController
       listing.sold = true
       listing.save
     end
-    user = User.find(payment.metadata.user_id)
+    user = User.find(payment.metadata.userid)
     cart = user.carts.last
     cart.completed = true
     cart.save

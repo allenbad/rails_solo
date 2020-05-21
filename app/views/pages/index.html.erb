@@ -1,0 +1,4 @@
+<% @users.each do |user| %>
+  <p>User: <%= user.email %> </h1>
+  <p>Location: <%= user.location.city %>, <%= user.location.state %>, <%= user.location.country %></p>
+<% end %>

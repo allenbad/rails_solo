@@ -21,6 +21,9 @@ user_admin = User.create(email: 'admin@box.com', password: 'password', admin: tr
 puts "Creating admin✅"
 
 address_one = Venue.create(name: "Mystery Box", address: "120 Spencer Street, Melbourne")
+address_one = Venue.create(name: "Mystery Box(one)", address: "740 Bourke St, Docklands")
+address_one = Venue.create(name: "Mystery Box(two)", address: "8 Whiteman St, Southbank")
+
 
 
 5.times do |i| # This should be above User generation
