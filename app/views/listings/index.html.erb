@@ -20,7 +20,7 @@
       <div class="container">
         <div class="listing-image">  
             <% unless listing.picture.attached? and user_signed_in? and listing.user_id == current_user.id %>
-              <%= link_to image_tag('defaultbox.jpeg', class: "img-thumbnail"), listing %>
+              <%= link_to image_tag(asset_path('defaultbox.jpeg'), class: "img-thumbnail"), listing %>
             <% else %>
               <%= link_to image_tag(listing.picture, class: "img-thumbnail"), listing %>
             <% end %>
